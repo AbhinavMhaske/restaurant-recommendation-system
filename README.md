@@ -14,19 +14,25 @@ Coming Soon (Streamlit Cloud)
 
 ## 📸 Screenshots
 
-### Home Page
+### 🏠 Home Page
 
-![Home](screenshots/home.png)
+![Home Page](screenshots/home.png)
 
-### Recommendations
+---
+
+### 🍽️ Recommendations
 
 ![Recommendations](screenshots/recommendations.png)
 
-### Comparison
+---
+
+### ⚖️ Restaurant Comparison
 
 ![Comparison](screenshots/comparison.png)
 
-### Analytics
+---
+
+### 📊 Analytics Dashboard
 
 ![Analytics](screenshots/analytics.png)
 
