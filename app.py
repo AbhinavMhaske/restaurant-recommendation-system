@@ -1,3 +1,6 @@
+import base64
+from pathlib import Path
+
 import streamlit as st
 
 from src.content_recommender import recommend
@@ -13,6 +16,14 @@ from src.charts import (
 
 # Load dataset
 df = load_data()
+
+import base64
+
+def get_base64_image(image_path):
+    with open(image_path, "rb") as img:
+        return base64.b64encode(img.read()).decode()
+
+hero_image = get_base64_image("assets/hero.png")
 if "favorites" not in st.session_state:
     st.session_state.favorites = []
 
@@ -159,14 +170,58 @@ st.sidebar.caption("Made with ❤️ using Python & Streamlit")
 # ----------------------------
 # Main Page
 # ----------------------------
-st.markdown("""
-<h1 style='text-align:center;font-size:52px;'>
-🍽️ Restaurant Recommendation Engine
-</h1>
+st.markdown(f"""
+<style>
 
-<p style='text-align:center;font-size:22px;color:gray;'>
-Discover restaurants you'll love using Machine Learning
-</p>
+.hero {{
+    width: 100%;
+    height: 550px;
+    border-radius: 25px;
+    overflow: hidden;
+
+    background-image:
+        linear-gradient(
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.55)
+        ),
+        url("data:image/png;base64,{hero_image}");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+
+    margin-bottom: 35px;
+
+.hero h1 {{
+    color: white;
+    font-size: 64px;
+    font-weight: 700;
+    margin: 0;
+}}
+
+.hero p {{
+    color: white;
+    font-size: 22px;
+    margin-top: 15px;
+}}
+
+</style>
+
+<div class="hero">
+
+<h1>🍽️ Restaurant Recommendation Engine</h1>
+
+<p>Discover amazing restaurants near you</p>
+
+</div>
+
 """, unsafe_allow_html=True)
 
 # Create tabs
@@ -179,55 +234,37 @@ with tab1:
 
     col1, col2, col3, col4 = st.columns(4)
 
-    with col1:
-        st.metric(
-        "🍴 Restaurants",
-        len(df)
-        )
-
-    with col2:
-        st.metric(
-        "⭐ Avg Rating",
-        round(df["rate (out of 5)"].mean(), 2)
-        )
-
-    with col3:
-        st.metric(
-        "🍜 Cuisine Types",
-        df["cuisines type"].nunique()
-        )
-
     with col4:
         st.metric(
         "💰 Avg Cost",
         f"₹{int(df['avg cost (two people)'].mean())}"
         )
     
-        st.subheader("📈 Quick Insights")
+    st.subheader("📈 Quick Insights")
         
-        high_rating = len(
+    high_rating = len(
             df[df["rate (out of 5)"] >= 4]
         )
 
-        percentage = round(
+    percentage = round(
             high_rating / len(df) * 100,
             1
         )
 
-        st.success(
+    st.success(
             f"⭐ {percentage}% of restaurants have a rating above 4."
         )
-        popular_area = (
+    popular_area = (
             df["area"]
             .value_counts()
             .idxmax()
         )
 
-        st.info(
+    st.info(
             f"📍 Most popular area: {popular_area}"
         )
 
-        popular_cuisine = (
+    popular_cuisine = (
             df["cuisines type"]
             .str.split(",")
             .explode()
@@ -236,7 +273,7 @@ with tab1:
             .idxmax()
         )
 
-        st.info(
+    st.info(
             f"🍜 Most popular cuisine: {popular_cuisine}"
         )
 
@@ -458,17 +495,13 @@ if st.button("🔍 Recommend"):
                         use_container_width=True
                     )
 
-                st.image(
-                    "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4",
-                    use_container_width=True
-                )
-            
-                image_url = get_restaurant_image(item["Cuisine"])
+                image_url = get_restaurant_image(item["Restaurant"])
 
-                st.image(
-                    image_url,
-                    use_container_width=True
-                )
+                if image_url:
+                    st.image(
+                        image_url,
+                        use_container_width=True
+                    )
 
                 st.markdown(f"## 🍽️ {item['Restaurant']}")
                 if st.button(
@@ -592,7 +625,14 @@ if st.button("🔍 Recommend"):
 # ----------------------------
 st.markdown("---")
 
-st.header("📊 Dataset Analytics")
+with tab1:
+
+    ...
+
+    st.header("📊 Dataset Analytics")
+
+    show_top_cuisines(df)
+    ...
 
 show_top_cuisines(df)
 show_rating_distribution(df)
