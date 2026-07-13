@@ -1,4 +1,4 @@
-# 🍽️ Restaurant Recommendation System
+#  Restaurant Recommendation System
 
 A Machine Learning powered Restaurant Recommendation System built using **Python**, **Scikit-Learn**, **Pandas**, **Plotly**, and **Streamlit**.
 
@@ -6,7 +6,7 @@ The application recommends restaurants based on cuisine similarity while also co
 
 ---
 
-## 🚀 Live Demo
+##  Live Demo
 
 Coming Soon (Streamlit Cloud)
 
@@ -20,25 +20,25 @@ Coming Soon (Streamlit Cloud)
 
 ---
 
-### 🍽️ Recommendations
+###  Recommendations
 
 ![Recommendations](screenshots/recommendations.png)
 
 ---
 
-### ⚖️ Restaurant Comparison
+###  Restaurant Comparison
 
 ![Comparison](screenshots/comparison.png)
 
 ---
 
-### 📊 Analytics Dashboard
+###  Analytics Dashboard
 
 ![Analytics](screenshots/analytics.png)
 
 ---
 
-## ✨ Features
+##  Features
 
 - 🍽️ Content-Based Recommendation Engine
 - 🤖 Hybrid Recommendation System
@@ -54,7 +54,7 @@ Coming Soon (Streamlit Cloud)
 
 ---
 
-## 🧠 Machine Learning
+##  Machine Learning
 
 The recommendation engine combines multiple techniques:
 
@@ -69,7 +69,7 @@ Final recommendations are generated using a weighted hybrid scoring algorithm.
 
 ---
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - Python
 - Pandas
@@ -80,7 +80,7 @@ Final recommendations are generated using a weighted hybrid scoring algorithm.
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```text
 restaurant-recommendation-system/
@@ -95,7 +95,7 @@ restaurant-recommendation-system/
 
 ---
 
-## ⚙️ Installation
+##  Installation
 
 Clone the repository
 
@@ -123,7 +123,7 @@ streamlit run app.py
 
 ---
 
-## 🎯 Future Improvements
+##  Future Improvements
 
 - Google Maps Integration
 - Restaurant Images API
@@ -134,7 +134,7 @@ streamlit run app.py
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
 **Abhinav Mhaske**
 
@@ -148,6 +148,6 @@ Interested in
 
 ---
 
-## ⭐ If you like this project
+##  If you like this project
 
 Please consider giving it a ⭐ on GitHub.
